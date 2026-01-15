@@ -8,3 +8,8 @@ patches:
     - op: replace
       path: /spec/replicas
       value: 1
+configMapGenerator:
+- name: app-config
+  behavior: replace
+  literals:
+  - message="Welcome to the DEVELOPMENT environment"
