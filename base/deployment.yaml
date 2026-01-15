@@ -2,9 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-app
+  labels:
+    app: nginx
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx  # This MUST match the labels below
   template:
+    metadata:
+      labels:
+        app: nginx
     spec:
       containers:
       - name: nginx
         image: nginx:1.25
+        ports:
+        - containerPort: 80
